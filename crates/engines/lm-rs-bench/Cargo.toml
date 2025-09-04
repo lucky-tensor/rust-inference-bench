@@ -1,0 +1,21 @@
+[package]
+name = "lm-rs-bench"
+version = "0.1.0"
+edition = "2021"
+description = "lm.rs CPU inference benchmark"
+
+[[bin]]
+name = "lm-rs-bench"
+path = "src/main.rs"
+
+[dependencies]
+shared-protocol = { path = "../../shared-protocol" }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+
+# lm.rs specific dependencies (minimal)
+rayon = "1.8"
+memmap2 = "0.9"
+bytemuck = "1.14"

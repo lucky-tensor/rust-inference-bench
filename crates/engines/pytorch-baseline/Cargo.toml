@@ -1,0 +1,16 @@
+[package]
+name = "pytorch-baseline"
+version = "0.1.0"
+edition = "2021"
+description = "Unoptimized PyTorch baseline benchmark"
+
+[[bin]]
+name = "pytorch-baseline"
+path = "src/main.rs"
+
+[dependencies]
+shared-protocol = { path = "../../shared-protocol" }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }

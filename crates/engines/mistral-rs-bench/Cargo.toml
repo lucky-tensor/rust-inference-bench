@@ -1,0 +1,27 @@
+[package]
+name = "mistral-rs-bench"
+version = "0.1.0"
+edition = "2021"
+description = "Mistral.rs LLM inference benchmark"
+
+[[bin]]
+name = "mistral-rs-bench"
+path = "src/main.rs"
+
+[dependencies]
+shared-protocol = { path = "../../shared-protocol" }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+
+# Mistral.rs specific dependencies
+mistralrs-core = "0.2"
+mistralrs-quant = "0.2"
+candle-core = "0.7"
+tokenizers = "0.19"
+
+[features]
+default = ["cuda"]
+cuda = ["mistralrs-core/cuda", "candle-core/cuda"]
+metal = ["mistralrs-core/metal"]

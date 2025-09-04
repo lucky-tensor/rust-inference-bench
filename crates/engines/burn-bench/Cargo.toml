@@ -1,0 +1,27 @@
+[package]
+name = "burn-bench"
+version = "0.1.0"
+edition = "2021"
+description = "Burn CubeCL inference benchmark"
+
+[[bin]]
+name = "burn-bench" 
+path = "src/main.rs"
+
+[dependencies]
+shared-protocol = { path = "../../shared-protocol" }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+
+# Burn-specific dependencies
+burn = "0.13"
+burn-candle = "0.13"
+burn-cuda = "0.13"
+tokenizers = "0.19"
+
+[features]
+default = ["cuda"]
+cuda = ["burn/cuda"]
+wgpu = ["burn/wgpu"]

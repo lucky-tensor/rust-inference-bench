@@ -1,0 +1,32 @@
+[package]
+name = "benchmark-runner"
+version = "0.1.0"
+edition = "2021"
+description = "Orchestrates and compares inference engine benchmarks"
+
+[[bin]]
+name = "benchmark-runner"
+path = "src/main.rs"
+
+[dependencies]
+shared-protocol = { path = "../shared-protocol" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+chrono = { workspace = true }
+
+# Analysis and reporting
+tabled = "0.15"
+plotters = "0.3"
+statrs = "0.16"
+serde_yaml = "0.9"
+
+# System monitoring
+sysinfo = "0.30"
+nvml-wrapper = "0.10"
+
+[features]
+default = ["plotting"]
+plotting = ["plotters"]

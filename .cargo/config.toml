@@ -1,0 +1,14 @@
+# Native CPU optimization for all builds
+[build]
+rustflags = ["-C", "target-cpu=native", "-C", "target-feature=+avx2,+fma"]
+
+[target.'cfg(target_os = "linux")']
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+
+# Optimize for specific CPU features if available
+[target.x86_64-unknown-linux-gnu]
+rustflags = [
+    "-C", "target-cpu=native",
+    "-C", "target-feature=+avx2,+fma,+avx512f", 
+    "-C", "link-arg=-fuse-ld=lld"
+]
